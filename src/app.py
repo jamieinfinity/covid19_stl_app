@@ -66,7 +66,7 @@ new_cases_chart = (c_pnt + c_line).configure_axis(
 
 # setup for the UI
 
-title_text = 'Covid-19 Data for St. Louis Metro'
+title_text = 'COVID-19 Data for St. Louis Metro'
 data_source_text = 'github.com/nytimes/covid-19-data'
 metro_text = 'St. Louis Metro region comprises the following counties: '
 mo_text = 'MO: {}'.format(', '.join(mo_counties)) 
