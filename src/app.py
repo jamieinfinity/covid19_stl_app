@@ -38,7 +38,7 @@ nyt_stl = stl_eda(nyt_full)
 date_domain = ["2020-03-01", "2021-5-1"]
 date_domain = list(pd.to_datetime(date_domain))
 
-c_pnt = alt.Chart(nyt_stl).mark_circle(point=True, color='black', opacity=0.3, size=30).encode(
+c_pnt = alt.Chart(nyt_stl).mark_circle(point=True, color='#00C2E6', opacity=0.3, size=30).encode(
     x=alt.X('date', title='', scale=alt.Scale(domain=date_domain)),
     y=alt.Y('new_cases_daily', title='daily reported new cases'),
     tooltip=['date', alt.Tooltip('new_cases_daily', title='new cases')]
@@ -47,7 +47,7 @@ c_pnt = alt.Chart(nyt_stl).mark_circle(point=True, color='black', opacity=0.3, s
     height=400
 ).interactive()
 
-c_line = alt.Chart(nyt_stl).mark_line(color='black', size=2).encode(
+c_line = alt.Chart(nyt_stl).mark_line(color='#02A9C8', size=2).encode(
     x=alt.X('date'),
     y=alt.Y('new_cases_roll7d_mean'),
     tooltip=['date', alt.Tooltip('new_cases_roll7d_mean', title='rolling 7day avg')]
