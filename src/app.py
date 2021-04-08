@@ -10,7 +10,7 @@ il_counties = ['Monroe', 'St. Clair', 'Clinton', 'Madison', 'Jersey']
 
 
 # functions
-@st.cache
+# @st.cache
 def load_data():
     return pd.read_csv(nyt_county_url, parse_dates=['date'], dtype={'fips':'str'})
 
