@@ -37,7 +37,7 @@ nyt_stl = stl_eda(nyt_full)
 
 
 # create chart
-date_domain = ["2020-03-01", "2022-1-1"]
+date_domain = ["2020-03-01", "2022-3-1"]
 date_domain = list(pd.to_datetime(date_domain))
 
 c_pnt = alt.Chart(nyt_stl).mark_circle(point=True, color='#00C2E6', opacity=0.3, size=30).encode(
