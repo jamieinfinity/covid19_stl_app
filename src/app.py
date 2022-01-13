@@ -22,7 +22,7 @@ def stl_eda(df):
     stlmetro_gb['date'] = stlmetro_gb.index
     stlmetro_gb['new_cases_daily'] = stlmetro_gb.cases - stlmetro_gb.cases.shift(1)
     stlmetro_gb['new_cases_daily'] = stlmetro_gb.new_cases_daily.fillna(1)
-    stlmetro_gb.loc[stlmetro_gb.new_cases_daily>5000, 'new_cases_daily'] = np.nan
+    stlmetro_gb.loc[(stlmetro_gb.new_cases_daily>5000) & (stlmetro_gb.date<'2021-12-01'), 'new_cases_daily'] = np.nan
     stlmetro_gb.loc[stlmetro_gb.date=='2021-03-08', 'new_cases_daily'] = np.nan
     stlmetro_gb.loc[stlmetro_gb.date=='2021-05-01', 'new_cases_daily'] = np.nan
     stlmetro_gb['new_cases_roll7d_mean'] = stlmetro_gb.rolling(window='7d', min_periods=4).new_cases_daily.mean().round(1)
@@ -42,7 +42,7 @@ date_domain = list(pd.to_datetime(date_domain))
 
 c_pnt = alt.Chart(nyt_stl).mark_circle(point=True, color='#00C2E6', opacity=0.3, size=30).encode(
     x=alt.X('date', title='', scale=alt.Scale(domain=date_domain)),
-    y=alt.Y('new_cases_daily', title='daily reported new cases'),
+    y=alt.Y('new_cases_daily', title='daily reported new cases', scale=alt.Scale(domain=[0, 13000])),
     tooltip=['date', alt.Tooltip('new_cases_daily', title='new cases')]
 ).properties(
     width=800,
